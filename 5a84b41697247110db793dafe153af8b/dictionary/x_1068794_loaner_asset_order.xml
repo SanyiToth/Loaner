@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="ea5bf95a97287110db793dafe153af96" extends="task" label="Loaner Asset Order" max_length="40" name="x_1068794_loaner_asset_order" type="collection"/>
+    <element db_object_id="ea5bf95a97287110db793dafe153af96" extends="task" label="Loaner Asset Order" max_length="40" name="x_1068794_loaner_asset_order" type="collection">
+        <element label="Asset" max_length="32" name="asset" reference="alm_asset" type="reference"/>
+        <element label="Asset functional" max_length="40" name="asset_functional" type="string"/>
+        <element label="Asset Prepared" max_length="40" name="asset_prepared" type="boolean"/>
+        <element default="N" label="Asset returned" max_length="40" name="asset_returned" type="string"/>
+        <element label="Asset stockroom&#9;" max_length="32" name="asset_stockroom" reference="alm_stockroom" type="reference"/>
+        <element label="Flow context" max_length="32" name="flow_context" reference="sys_flow_context" type="reference"/>
+        <element label="Justification" max_length="2000" name="justification" type="string"/>
+        <element label="Lead time" max_length="40" name="lead_time" type="integer"/>
+        <element label="Loaner order status" max_length="40" name="loaner_order_status" type="string"/>
+    </element>
 </database>
