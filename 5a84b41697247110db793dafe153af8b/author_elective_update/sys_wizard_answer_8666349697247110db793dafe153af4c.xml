@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_wizard_answer">
+    <sys_wizard_answer action="DELETE">
+        <active>true</active>
+        <answer>New Loaner asset</answer>
+        <button_label/>
+        <dependent_value/>
+        <element/>
+        <name>Loaner asset</name>
+        <next_question/>
+        <order>100</order>
+        <payload_name/>
+        <question display_value="Task" name="Task">d1998c87243021108c8bc6863d3fade0</question>
+        <roles/>
+        <script/>
+        <sys_class_name>sys_wizard_answer</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-11 08:31:58</sys_created_on>
+        <sys_id>8666349697247110db793dafe153af4c</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Loaner asset</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_update_name>sys_wizard_answer_8666349697247110db793dafe153af4c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-11 08:31:58</sys_updated_on>
+        <table/>
+        <target_url>x_1068794_loaner_loaner_asset.do</target_url>
+        <type>1</type>
+    </sys_wizard_answer>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Loaner">5a84b41697247110db793dafe153af8b</application>
+        <file_path/>
+        <instance_id>8ceddeb2dbbc7b000ae3ac44d496199a</instance_id>
+        <instance_name>dev81681</instance_name>
+        <name>sys_wizard_answer_8666349697247110db793dafe153af4c</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_wizard_answer"><sys_wizard_answer action="INSERT_OR_UPDATE"><active>true</active><answer>New Loaner asset</answer><button_label/><dependent_value/><element/><name>Loaner asset</name><next_question/><order>100</order><payload_name/><question display_value="Task" name="Task">d1998c87243021108c8bc6863d3fade0</question><roles/><script/><sys_class_name>sys_wizard_answer</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-08-11 08:31:58</sys_created_on><sys_id>8666349697247110db793dafe153af4c</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Loaner asset</sys_name><sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package><sys_policy/><sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope><sys_update_name>sys_wizard_answer_8666349697247110db793dafe153af4c</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-08-11 08:31:58</sys_updated_on><table/><target_url>x_1068794_loaner_loaner_asset.do</target_url><type>1</type></sys_wizard_answer></record_update>]]></payload>
+        <payload_hash>-741189902</payload_hash>
+        <record_name>Loaner asset</record_name>
+        <reverted_from/>
+        <source>da84b41697247110db793dafe153af8d</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-11 08:31:58</sys_created_on>
+        <sys_id>4266349697247110db793dafe153af4f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>189e3b948c60000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-11 08:31:58</sys_updated_on>
+        <type>Answer</type>
+        <update_guid>4666349629247110e61d062224b8f94e</update_guid>
+        <update_guid_history>4666349629247110e61d062224b8f94e:-741189902</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-11 12:44:22</sys_created_on>
+        <sys_db_object display_value="" name="sys_wizard_answer">sys_wizard_answer</sys_db_object>
+        <sys_id>00d3f5354ad34548805b26cfa91ceda4</sys_id>
+        <sys_metadata>8666349697247110db793dafe153af4c</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Loaner asset</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_parent display_value="Task">d1998c87243021108c8bc6863d3fade0</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_scope_delete display_value="">229861d2eaf64e1ab7c66287762c0824</sys_scope_delete>
+        <sys_update_name>sys_wizard_answer_8666349697247110db793dafe153af4c</sys_update_name>
+        <sys_update_version display_value="sys_wizard_answer_8666349697247110db793dafe153af4c">4266349697247110db793dafe153af4f</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-11 12:44:22</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

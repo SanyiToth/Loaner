@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role">
+    <sys_user_role action="DELETE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description>Default user role</description>
+        <elevated_privilege>false</elevated_privilege>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>x_1068794_loaner.user</name>
+        <requires_subscription>-1</requires_subscription>
+        <scoped_admin>false</scoped_admin>
+        <suffix>user</suffix>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-11 08:23:48</sys_created_on>
+        <sys_id>aa84b41697247110db793dafe153afb0</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1068794_loaner.user</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_update_name>sys_user_role_aa84b41697247110db793dafe153afb0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-11 08:23:48</sys_updated_on>
+    </sys_user_role>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Loaner">5a84b41697247110db793dafe153af8b</application>
+        <file_path/>
+        <instance_id>8ceddeb2dbbc7b000ae3ac44d496199a</instance_id>
+        <instance_name>dev81681</instance_name>
+        <name>sys_user_role_aa84b41697247110db793dafe153afb0</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_user_role"><sys_user_role action="INSERT_OR_UPDATE"><assignable_by/><can_delegate>true</can_delegate><description>Default user role</description><elevated_privilege>false</elevated_privilege><grantable>true</grantable><includes_roles/><name>x_1068794_loaner.user</name><requires_subscription>-1</requires_subscription><scoped_admin>false</scoped_admin><suffix>user</suffix><sys_class_name>sys_user_role</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-08-11 08:23:48</sys_created_on><sys_id>aa84b41697247110db793dafe153afb0</sys_id><sys_mod_count>0</sys_mod_count><sys_name>x_1068794_loaner.user</sys_name><sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package><sys_policy/><sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope><sys_update_name>sys_user_role_aa84b41697247110db793dafe153afb0</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-08-11 08:23:48</sys_updated_on></sys_user_role></record_update>]]></payload>
+        <payload_hash>2050741226</payload_hash>
+        <record_name>x_1068794_loaner.user</record_name>
+        <reverted_from/>
+        <source>da84b41697247110db793dafe153af8d</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-11 08:23:48</sys_created_on>
+        <sys_id>6e84b41697247110db793dafe153afb2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>189e3b1cf520000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-11 08:23:48</sys_updated_on>
+        <type>Role</type>
+        <update_guid>a284b416f224711005ae085c3e6052b2</update_guid>
+        <update_guid_history>a284b416f224711005ae085c3e6052b2:2050741226</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="x_1068794_loaner.user">a8e7b11a97287110db793dafe153af66</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-11 13:18:02</sys_created_on>
+        <sys_db_object display_value="" name="sys_user_role">sys_user_role</sys_db_object>
+        <sys_id>137f14e8bced4b8281b77a4b046f0d11</sys_id>
+        <sys_metadata>aa84b41697247110db793dafe153afb0</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>x_1068794_loaner.user</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_scope_delete display_value="">229861d2eaf64e1ab7c66287762c0824</sys_scope_delete>
+        <sys_update_name>sys_user_role_aa84b41697247110db793dafe153afb0</sys_update_name>
+        <sys_update_version display_value="sys_user_role_aa84b41697247110db793dafe153afb0">6e84b41697247110db793dafe153afb2</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-11 13:18:02</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

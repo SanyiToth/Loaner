@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_dictionary_override">
+    <sys_dictionary_override action="DELETE">
+        <attributes/>
+        <attributes_override>false</attributes_override>
+        <base_table>task</base_table>
+        <calculation/>
+        <calculation_override>false</calculation_override>
+        <default_value/>
+        <default_value_override>false</default_value_override>
+        <dependent/>
+        <dependent_override>false</dependent_override>
+        <display_override>false</display_override>
+        <element>sys_id</element>
+        <mandatory>false</mandatory>
+        <mandatory_override>true</mandatory_override>
+        <name>x_1068794_loaner_loaner_asset</name>
+        <read_only>false</read_only>
+        <read_only_override>false</read_only_override>
+        <reference_qual/>
+        <reference_qual_override>false</reference_qual_override>
+        <sys_class_name>sys_dictionary_override</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-11 09:22:47</sys_created_on>
+        <sys_id>e602419297647110db793dafe153afb4</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>sys_id</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_update_name>sys_dictionary_override_e602419297647110db793dafe153afb4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-11 09:22:47</sys_updated_on>
+    </sys_dictionary_override>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Loaner">5a84b41697247110db793dafe153af8b</application>
+        <file_path/>
+        <instance_id>8ceddeb2dbbc7b000ae3ac44d496199a</instance_id>
+        <instance_name>dev81681</instance_name>
+        <name>sys_dictionary_override_e602419297647110db793dafe153afb4</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_dictionary_override"><sys_dictionary_override action="INSERT_OR_UPDATE"><attributes/><attributes_override>false</attributes_override><base_table>task</base_table><calculation/><calculation_override>false</calculation_override><default_value/><default_value_override>false</default_value_override><dependent/><dependent_override>false</dependent_override><display_override>false</display_override><element>sys_id</element><mandatory>false</mandatory><mandatory_override>true</mandatory_override><name>x_1068794_loaner_loaner_asset</name><read_only>false</read_only><read_only_override>false</read_only_override><reference_qual/><reference_qual_override>false</reference_qual_override><sys_class_name>sys_dictionary_override</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-08-11 09:22:47</sys_created_on><sys_id>e602419297647110db793dafe153afb4</sys_id><sys_mod_count>1</sys_mod_count><sys_name>sys_id</sys_name><sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package><sys_policy/><sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope><sys_update_name>sys_dictionary_override_e602419297647110db793dafe153afb4</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-08-11 09:22:47</sys_updated_on></sys_dictionary_override></record_update>]]></payload>
+        <payload_hash>1355778515</payload_hash>
+        <record_name>sys_id</record_name>
+        <reverted_from/>
+        <source>da84b41697247110db793dafe153af8d</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-11 09:22:47</sys_created_on>
+        <sys_id>a202419297647110db793dafe153afd6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>189e3e7d1cc0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-11 09:22:47</sys_updated_on>
+        <type>Dictionary Entry Override</type>
+        <update_guid>aa024192ef64711095ae1487caaf9ad5</update_guid>
+        <update_guid_history>aa024192ef64711095ae1487caaf9ad5:1355778515,ae024192056471103b0b4f0e31fdfeb7:384962314</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-11 12:44:18</sys_created_on>
+        <sys_db_object display_value="" name="sys_dictionary_override">sys_dictionary_override</sys_db_object>
+        <sys_id>2a7d5a6b8c7941dba1037c85dee26391</sys_id>
+        <sys_metadata>e602419297647110db793dafe153afb4</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>sys_id</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_parent display_value="">0266349697247110db793dafe153af3b</sys_parent>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_scope_delete display_value="">229861d2eaf64e1ab7c66287762c0824</sys_scope_delete>
+        <sys_update_name>sys_dictionary_override_e602419297647110db793dafe153afb4</sys_update_name>
+        <sys_update_version display_value="sys_dictionary_override_e602419297647110db793dafe153afb4">a202419297647110db793dafe153afd6</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-11 12:44:18</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
