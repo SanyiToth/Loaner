@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice">
+    <question_choice action="DELETE">
+        <inactive>false</inactive>
+        <misc>0</misc>
+        <order>100</order>
+        <published_ref/>
+        <question display_value="Requested for">9b2c163f97603110db793dafe153af47</question>
+        <rec_misc>0</rec_misc>
+        <sys_class_name>question_choice</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-16 07:53:47</sys_created_on>
+        <sys_id>696d9a7f97603110db793dafe153af6b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>For me</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_update_name>question_choice_696d9a7f97603110db793dafe153af6b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-16 07:53:47</sys_updated_on>
+        <text>For me</text>
+        <value>for_me</value>
+    </question_choice>
+    <fx_price action="DELETE" query="id=696d9a7f97603110db793dafe153af6b"/>
+    <fx_price action="DELETE">
+        <amount>0</amount>
+        <currency display_value="USD">USD</currency>
+        <field>misc</field>
+        <id>696d9a7f97603110db793dafe153af6b</id>
+        <parent/>
+        <reference_amount>0</reference_amount>
+        <reference_currency display_value="USD">USD</reference_currency>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-16 07:53:47</sys_created_on>
+        <sys_id>a39d5e7f97603110db793dafe153afd4</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-16 07:53:47</sys_updated_on>
+        <table>question_choice</table>
+        <type>calculated</type>
+    </fx_price>
+    <fx_price action="DELETE">
+        <amount>0</amount>
+        <currency display_value="USD">USD</currency>
+        <field>rec_misc</field>
+        <id>696d9a7f97603110db793dafe153af6b</id>
+        <parent/>
+        <reference_amount>0</reference_amount>
+        <reference_currency display_value="USD">USD</reference_currency>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-16 07:53:47</sys_created_on>
+        <sys_id>2b9d5e7f97603110db793dafe153afd3</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-16 07:53:47</sys_updated_on>
+        <table>question_choice</table>
+        <type>calculated</type>
+    </fx_price>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Loaner">5a84b41697247110db793dafe153af8b</application>
+        <file_path/>
+        <instance_id>8ceddeb2dbbc7b000ae3ac44d496199a</instance_id>
+        <instance_name>dev81681</instance_name>
+        <name>question_choice_696d9a7f97603110db793dafe153af6b</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="question_choice"><question_choice action="INSERT_OR_UPDATE"><inactive>false</inactive><misc>0</misc><order>100</order><published_ref/><question display_value="Requested for">9b2c163f97603110db793dafe153af47</question><rec_misc>0</rec_misc><sys_class_name>question_choice</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-08-16 07:53:47</sys_created_on><sys_id>696d9a7f97603110db793dafe153af6b</sys_id><sys_mod_count>0</sys_mod_count><sys_name>For me</sys_name><sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package><sys_policy/><sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope><sys_update_name>question_choice_696d9a7f97603110db793dafe153af6b</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-08-16 07:53:47</sys_updated_on><text>For me</text><value>for_me</value></question_choice><fx_price action="delete_multiple" query="id=696d9a7f97603110db793dafe153af6b"/><fx_price action="INSERT_OR_UPDATE"><amount>0</amount><currency display_value="USD">USD</currency><field>misc</field><id>696d9a7f97603110db793dafe153af6b</id><parent/><reference_amount>0</reference_amount><reference_currency display_value="USD">USD</reference_currency><sys_created_by>admin</sys_created_by><sys_created_on>2023-08-16 07:53:47</sys_created_on><sys_id>a39d5e7f97603110db793dafe153afd4</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-08-16 07:53:47</sys_updated_on><table>question_choice</table><type>calculated</type></fx_price><fx_price action="INSERT_OR_UPDATE"><amount>0</amount><currency display_value="USD">USD</currency><field>rec_misc</field><id>696d9a7f97603110db793dafe153af6b</id><parent/><reference_amount>0</reference_amount><reference_currency display_value="USD">USD</reference_currency><sys_created_by>admin</sys_created_by><sys_created_on>2023-08-16 07:53:47</sys_created_on><sys_id>2b9d5e7f97603110db793dafe153afd3</sys_id><sys_mod_count>0</sys_mod_count><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-08-16 07:53:47</sys_updated_on><table>question_choice</table><type>calculated</type></fx_price></record_update>]]></payload>
+        <payload_hash>1312700451</payload_hash>
+        <record_name>For me</record_name>
+        <reverted_from/>
+        <source>238a759a97287110db793dafe153afaa</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-16 07:53:47</sys_created_on>
+        <sys_id>2b9d5e7f97603110db793dafe153afd6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>189fd5620b10000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-16 07:53:47</sys_updated_on>
+        <type>Question Choice</type>
+        <update_guid>6f9d5e7fb1603110331f5e4a7580c2d5</update_guid>
+        <update_guid_history>6f9d5e7fb1603110331f5e4a7580c2d5:1312700451</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="For me">fea053ff97243110db793dafe153af2a</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-16 11:36:49</sys_created_on>
+        <sys_db_object display_value="" name="question_choice">question_choice</sys_db_object>
+        <sys_id>dd6451b4010d4f88a15cc3e9085f3c61</sys_id>
+        <sys_metadata>696d9a7f97603110db793dafe153af6b</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>For me</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_scope_delete display_value="">229861d2eaf64e1ab7c66287762c0824</sys_scope_delete>
+        <sys_update_name>question_choice_696d9a7f97603110db793dafe153af6b</sys_update_name>
+        <sys_update_version display_value="question_choice_696d9a7f97603110db793dafe153af6b">2b9d5e7f97603110db793dafe153afd6</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-16 11:36:49</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
