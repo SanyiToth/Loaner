@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module">
+    <sys_app_module action="DELETE">
+        <active>true</active>
+        <application display_value="Loaner Asset Order">19eb391e97287110db793dafe153af27</application>
+        <assessment/>
+        <device_type/>
+        <filter/>
+        <hint/>
+        <homepage/>
+        <image/>
+        <link_type>LIST</link_type>
+        <map_page/>
+        <mobile_title>Dates</mobile_title>
+        <mobile_view_name>Mobile</mobile_view_name>
+        <name>x_1068794_loaner_date</name>
+        <order/>
+        <override_menu_roles>false</override_menu_roles>
+        <query/>
+        <report/>
+        <roles>x_1068794_loaner.loaner_asset_order_user</roles>
+        <sys_class_name>sys_app_module</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-16 06:47:32</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>417e0abf97203110db793dafe153aff2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Dates</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_update_name>sys_app_module_417e0abf97203110db793dafe153aff2</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-16 06:47:32</sys_updated_on>
+        <timeline_page/>
+        <title>Dates</title>
+        <uncancelable>false</uncancelable>
+        <view_name/>
+        <window_name/>
+    </sys_app_module>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Loaner">5a84b41697247110db793dafe153af8b</application>
+        <file_path/>
+        <instance_id>8ceddeb2dbbc7b000ae3ac44d496199a</instance_id>
+        <instance_name>dev81681</instance_name>
+        <name>sys_app_module_417e0abf97203110db793dafe153aff2</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_app_module"><sys_app_module action="INSERT_OR_UPDATE"><active>true</active><application display_value="Loaner Asset Order">19eb391e97287110db793dafe153af27</application><assessment/><device_type/><filter/><hint/><homepage/><image/><link_type>LIST</link_type><map_page/><mobile_title>Dates</mobile_title><mobile_view_name>Mobile</mobile_view_name><name>x_1068794_loaner_date</name><order/><override_menu_roles>false</override_menu_roles><query/><report/><roles>x_1068794_loaner.loaner_asset_order_user</roles><sys_class_name>sys_app_module</sys_class_name><sys_created_by>admin</sys_created_by><sys_created_on>2023-08-16 06:47:32</sys_created_on><sys_domain>global</sys_domain><sys_domain_path>/</sys_domain_path><sys_id>417e0abf97203110db793dafe153aff2</sys_id><sys_mod_count>0</sys_mod_count><sys_name>Dates</sys_name><sys_overrides/><sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package><sys_policy/><sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope><sys_update_name>sys_app_module_417e0abf97203110db793dafe153aff2</sys_update_name><sys_updated_by>admin</sys_updated_by><sys_updated_on>2023-08-16 06:47:32</sys_updated_on><timeline_page/><title>Dates</title><uncancelable>false</uncancelable><view_name/><window_name/></sys_app_module></record_update>]]></payload>
+        <payload_hash>-1542160356</payload_hash>
+        <record_name>Dates</record_name>
+        <reverted_from/>
+        <source>238a759a97287110db793dafe153afaa</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-16 06:47:32</sys_created_on>
+        <sys_id>097e0abf97203110db793dafe153aff5</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>189fd1979440000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-16 06:47:32</sys_updated_on>
+        <type>Module</type>
+        <update_guid>4d7e0abfb12031101bd14cee5015fbf4</update_guid>
+        <update_guid_history>4d7e0abfb12031101bd14cee5015fbf4:-1542160356</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete display_value="Dates">69b8da3b97603110db793dafe153af59</sys_audit_delete>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-16 07:32:21</sys_created_on>
+        <sys_db_object display_value="" name="sys_app_module">sys_app_module</sys_db_object>
+        <sys_id>37dc34da6caa4bb891497739a0499210</sys_id>
+        <sys_metadata>417e0abf97203110db793dafe153aff2</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Dates</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_scope_delete display_value="">229861d2eaf64e1ab7c66287762c0824</sys_scope_delete>
+        <sys_update_name>sys_app_module_417e0abf97203110db793dafe153aff2</sys_update_name>
+        <sys_update_version display_value="sys_app_module_417e0abf97203110db793dafe153aff2">097e0abf97203110db793dafe153aff5</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-16 07:32:21</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
