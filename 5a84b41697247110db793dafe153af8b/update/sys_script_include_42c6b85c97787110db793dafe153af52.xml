@@ -30,12 +30,12 @@ HampLoanerAjaxUtils.prototype = Object.extendsObject(global.AbstractAjaxProcesso
 			if (sdt.before(cdt)) {
 				res.isStartDateValid = false;
 				res.startDateErrorMsg = gs.getMessage(
-					'{0} is not valid. Select a start date on or after current date', [startDate]
+					'{0} is not valid. Select a start date on or after current date!', [startDate]
 				);
 			} else if (sdt.after(maxsdt)) {
 				res.isStartDateValid = false;
 				res.startDateErrorMsg = gs.getMessage(
-					'{0} is not valid. Select a start date within {1} months from current date',
+					'{0} is not valid. Select a start date within {1} months from current date!',
 					[startDate, String(MAX_MONTHS_START_DATE)]
 				);
 			} else {
@@ -50,12 +50,12 @@ HampLoanerAjaxUtils.prototype = Object.extendsObject(global.AbstractAjaxProcesso
 			if (rdt.onOrBefore(sdt)) {
 				res.isReturnDateValid = false;
 				res.returnDateErrorMsg = gs.getMessage(
-					'{0} is not valid. Select a return date after the selected start date', [returnDate]
+					'{0} is not valid. Select a return date after the selected start date!', [returnDate]
 				);
 			} else if (rdt.after(maxrdt)) {
 				res.isReturnDateValid = false;
 				res.returnDateErrorMsg = gs.getMessage(
-					'{0} is not valid. Select a return date within {1} months from the selected start date',
+					'{0} is not valid. Select a return date within {1} months from the selected start date!',
 					[returnDate, String(MAX_MONTHS_RETURN_DATE)]
 				);
 			} else {
@@ -134,13 +134,13 @@ HampLoanerAjaxUtils.prototype = Object.extendsObject(global.AbstractAjaxProcesso
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-08-17 13:52:37</sys_created_on>
         <sys_id>42c6b85c97787110db793dafe153af52</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>HampLoanerAjaxUtils</sys_name>
         <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
         <sys_policy/>
         <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
         <sys_update_name>sys_script_include_42c6b85c97787110db793dafe153af52</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-08-17 14:17:04</sys_updated_on>
+        <sys_updated_on>2023-08-18 08:23:48</sys_updated_on>
     </sys_script_include>
 </record_update>

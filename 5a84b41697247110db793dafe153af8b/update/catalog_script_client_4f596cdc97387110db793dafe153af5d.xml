@@ -19,23 +19,23 @@
         <order/>
         <script><![CDATA[function handleLoanerAssetAvailabilityResponse(response) {
     var answer = JSON.parse(response.responseXML.documentElement.getAttribute('answer'));
-	g_form.hideFieldMsg('return_date');
+    g_form.hideFieldMsg('return_date');
     if (!answer.isAvailable) {
         g_form.showFieldMsg('return_date', answer.message, 'warning');
     }
 }
 
 function checkLoanerAssetAvailability() {
-    if (g_form.getValue('location') !== ''
-        && g_form.getValue('model') !== ''
-        && g_form.getValue('start_date') !== ''
-        && g_form.getValue('return_date') !== '') {
+    if (g_form.getValue('location') !== '' &&
+        g_form.getValue('model') !== '' &&
+        g_form.getValue('start_date') !== '' &&
+        g_form.getValue('return_date') !== '') {
 
         var ga = new GlideAjax('x_1068794_loaner.HampLoanerAjaxUtils');
         ga.addParam('sysparm_name', 'isLoanerAssetAvailable');
         ga.addParam('sysparm_location', g_form.getValue('location'));
         ga.addParam('sysparm_model', g_form.getValue('model'));
-		ga.addParam('sysparm_lead_time', g_form.getValue('lead_time'));
+        ga.addParam('sysparm_lead_time', g_form.getValue('lead_time'));
         ga.addParam('sysparm_start_date', g_form.getValue('start_date'));
         ga.addParam('sysparm_return_date', g_form.getValue('return_date'));
         ga.getXML(handleLoanerAssetAvailabilityResponse);
@@ -46,25 +46,43 @@ function onChange(control, oldValue, newValue, isLoading) {
     var startDate;
     var returnDate;
 
+
+
     function callback(response) {
         var msg;
         var answer = JSON.parse(response.responseXML.documentElement.getAttribute("answer"));
-        if (answer['isStartDateValid'] == false) {
+        if (newValue == '' && !isLoading) {
+            msg = 'Start date is not valid. Field cannot be empty!';
+            g_form.showFieldMsg('start_date', msg, 'error');
+            g_form.clearValue('return_date');
+            g_form.setMandatory('return_date', false);
+            g_form.setDisabled('return_date', true);
+        } else if (answer['isStartDateValid'] == false) {
             g_form.clearValue('start_date');
             msg = answer['startDateErrorMsg'];
             g_form.showFieldMsg('start_date', msg, 'error');
+            g_form.clearValue('return_date');
+            g_form.setMandatory('return_date', false);
+            g_form.setDisabled('return_date', true);
         } else if (answer['isReturnDateValid'] == false) {
             g_form.clearValue('return_date');
-			msg = answer['returnDateErrorMsg'];
+            msg = answer['returnDateErrorMsg'];
             g_form.showFieldMsg('return_date', msg, 'error');
+        } else if (!isLoading) {
+            g_form.setDisabled('return_date', false);
+            g_form.setMandatory('return_date', true);
+
         }
-		// checkLoanerAssetAvailability();
-    }
-    if (isLoading || newValue == '') {
-        return;
+        // checkLoanerAssetAvailability();
     }
     startDate = g_form.getValue('start_date');
     returnDate = g_form.getValue('return_date');
+    if (isLoading || newValue == '') {
+        g_form.setMandatory('return_date', false);
+        g_form.setDisabled('return_date', true);
+
+    }
+
     var ga = new GlideAjax('x_1068794_loaner.HampLoanerAjaxUtils');
     ga.addParam('sysparm_name', 'validateDates');
     ga.addParam('sysparm_startdate', startDate);
@@ -77,7 +95,7 @@ function onChange(control, oldValue, newValue, isLoading) {
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>4f596cdc97387110db793dafe153af5d</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>23</sys_mod_count>
         <sys_name>Handle Start date change</sys_name>
         <sys_overrides/>
         <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
@@ -85,7 +103,7 @@ function onChange(control, oldValue, newValue, isLoading) {
         <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
         <sys_update_name>catalog_script_client_4f596cdc97387110db793dafe153af5d</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-08-17 14:02:57</sys_updated_on>
+        <sys_updated_on>2023-08-18 08:25:17</sys_updated_on>
         <table/>
         <type>onChange</type>
         <ui_type>10</ui_type>
