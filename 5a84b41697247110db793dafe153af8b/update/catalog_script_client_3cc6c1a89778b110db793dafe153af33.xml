@@ -8,50 +8,44 @@
         <applies_target_record>false</applies_target_record>
         <applies_to>set</applies_to>
         <cat_item/>
-        <cat_variable>IO:2b20977f97243110db793dafe153af69</cat_variable>
+        <cat_variable/>
         <condition/>
         <description/>
         <field/>
         <global>true</global>
         <isolate_script>true</isolate_script>
         <messages/>
-        <name>Validate Requested for</name>
+        <name>Validate Submit</name>
         <order/>
-        <script><![CDATA[function onChange(control, oldValue, newValue, isLoading) {
-    if (newValue == '') {
-        var msg = 'Requested for is not valid. Field cannot be empty!';
-        g_form.showFieldMsg('requested_for', msg, 'error');
-        g_form.clearValue('start_date');
-		g_form.setMandatory('start_date', false);
-        g_form.setDisabled('start_date', true);
-		g_form.hideFieldMsg('start_date',true);
-		g_form.hideFieldMsg('return_date',true);
-		g_form.hideFieldMsg('pick_up_location',true);
-		g_form.hideFieldMsg('model',true);
-		g_form.hideFieldMsg('justification',true);
-    } else {
-        g_form.setDisabled('start_date', false);
-        g_form.setMandatory('start_date', true);
+        <script><![CDATA[function onSubmit() {
+    if (g_form.getValue('requested_for') == '' ||
+        g_form.getValue('start_date') == '' ||
+        g_form.getValue('return_date') == '' ||
+        g_form.getValue('pick_up_location') == '' ||
+        g_form.getValue('model') == '' ||
+        g_form.getValue('justification') == '') {
+        g_form.addErrorMessage("Please fill out all required fields!");
+        return false;
     }
 }]]></script>
         <sys_class_name>catalog_script_client</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2023-08-18 07:11:03</sys_created_on>
+        <sys_created_on>2023-08-18 10:22:27</sys_created_on>
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
-        <sys_id>e7c560a897f4b110db793dafe153afaa</sys_id>
-        <sys_mod_count>8</sys_mod_count>
-        <sys_name>Validate Requested for</sys_name>
+        <sys_id>3cc6c1a89778b110db793dafe153af33</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Validate Submit</sys_name>
         <sys_overrides/>
         <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
         <sys_policy/>
         <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
-        <sys_update_name>catalog_script_client_e7c560a897f4b110db793dafe153afaa</sys_update_name>
+        <sys_update_name>catalog_script_client_3cc6c1a89778b110db793dafe153af33</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-08-18 09:11:37</sys_updated_on>
+        <sys_updated_on>2023-08-18 10:32:58</sys_updated_on>
         <table/>
-        <type>onChange</type>
-        <ui_type>10</ui_type>
+        <type>onSubmit</type>
+        <ui_type>1</ui_type>
         <variable_set display_value="Loaner Asset Request Variables">2c1b16fb97603110db793dafe153af36</variable_set>
         <view/>
     </catalog_script_client>
