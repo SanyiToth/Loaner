@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="DELETE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_1068794_loaner.HampLoanerUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>HampLoanerUtils</name>
+        <script><![CDATA[var HampLoanerUtils = Class.create();
+HampLoanerUtils.prototype = {
+    initialize: function() {},
+    getModelsWithLoanerAssets: function(locationName) {
+        var filter;
+        var modelsarray = [];
+        var assetsGa = new GlideAggregate('alm_asset');
+        if (!locationName) {
+            assetsGa.addQuery('stockroom.name', 'Domat/Ems').addOrCondition('stockroom.name', 'Bonaduz');
+        } else {
+            assetsGa.addQuery('stockroom.name', locationName)
+        }
+        assetsGa.addQuery('stockroom.name', 'Domat/Ems').addOrCondition('stockroom.name', 'Bonaduz');
+        assetsGa.setGroup(true);
+        assetsGa.groupBy('model.sys_id');
+        assetsGa.query();
+        while (assetsGa.next()) {
+            modelsarray.push(assetsGa.getValue('model.sys_id'));
+        }
+        filter = 'sys_idIN' + modelsarray;
+        return filter;
+    },
+
+    type: 'HampLoanerUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-21 12:06:31</sys_created_on>
+        <sys_id>8847812197743110db793dafe153af43</sys_id>
+        <sys_mod_count>18</sys_mod_count>
+        <sys_name>HampLoanerUtils</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_update_name>sys_script_include_8847812197743110db793dafe153af43</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-21 13:47:31</sys_updated_on>
+    </sys_script_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Loaner">5a84b41697247110db793dafe153af8b</application>
+        <file_path/>
+        <instance_id>8ceddeb2dbbc7b000ae3ac44d496199a</instance_id>
+        <instance_name>dev81681</instance_name>
+        <name>sys_script_include_8847812197743110db793dafe153af43</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;x_1068794_loaner.HampLoanerUtils&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description/&gt;&lt;name&gt;HampLoanerUtils&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var HampLoanerUtils = Class.create();
+HampLoanerUtils.prototype = {
+    initialize: function() {},
+    getModelsWithLoanerAssets: function(locationName) {
+        var filter;
+        var modelsarray = [];
+        var assetsGa = new GlideAggregate('alm_asset');
+        if (!locationName) {
+            assetsGa.addQuery('stockroom.name', 'Domat/Ems').addOrCondition('stockroom.name', 'Bonaduz');
+        } else {
+            assetsGa.addQuery('stockroom.name', locationName)
+        }
+        assetsGa.addQuery('stockroom.name', 'Domat/Ems').addOrCondition('stockroom.name', 'Bonaduz');
+        assetsGa.setGroup(true);
+        assetsGa.groupBy('model.sys_id');
+        assetsGa.query();
+        while (assetsGa.next()) {
+            modelsarray.push(assetsGa.getValue('model.sys_id'));
+        }
+        filter = 'sys_idIN' + modelsarray;
+        return filter;
+    },
+
+    type: 'HampLoanerUtils'
+};]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-08-21 12:06:31&lt;/sys_created_on&gt;&lt;sys_id&gt;8847812197743110db793dafe153af43&lt;/sys_id&gt;&lt;sys_mod_count&gt;18&lt;/sys_mod_count&gt;&lt;sys_name&gt;HampLoanerUtils&lt;/sys_name&gt;&lt;sys_package display_value="Loaner" source="x_1068794_loaner"&gt;5a84b41697247110db793dafe153af8b&lt;/sys_package&gt;&lt;sys_policy&gt;read&lt;/sys_policy&gt;&lt;sys_scope display_value="Loaner"&gt;5a84b41697247110db793dafe153af8b&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_8847812197743110db793dafe153af43&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-08-21 13:47:31&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>-1096937463</payload_hash>
+        <record_name>HampLoanerUtils</record_name>
+        <reverted_from/>
+        <source>238a759a97287110db793dafe153afaa</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-21 13:47:31</sys_created_on>
+        <sys_id>028e91e997b43110db793dafe153afa1</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18a1859c61d0000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-21 13:47:31</sys_updated_on>
+        <type>Script Include</type>
+        <update_guid>c68e91e994b43110eb8fdebda2e54aa0</update_guid>
+        <update_guid_history>c68e91e994b43110eb8fdebda2e54aa0:-1096937463,db3e5d690cb43110d4125e9573bbcd9e:1269619911,e12e55a9e2b43110462e43c024ef52a2:-426323854,10fd116939b4311081a8422d509148d8:852001164,71add96940b4311062c6a7b358195ec2:-1794331660,b39d59297bb431109a2334d096cb8a54:-1551997286,6e0ddd2926b43110a67cdaba3473d324:2041568181,bdca196550b4311035bbc20f0028affb:-590065480,ba6a11e57db43110373c3604453a7268:-502558868,eff9196548b43110ac7c34516a768af6:940799036,c5d91965e0b43110c1cf43e5bab029bc:696605195,ac5999253cb43110f42728a3fe6f59a6:-1465659172,c319d965e1b4311046c415c649da716b:1709747134,ecf8d1652ab4311011b903726e29687e:2135931748,20959d6186b43110ee7fca3f29653e8f:-2144020991,d0994d6516743110a3251cd394e1d809:-1105256014,19b88de13f743110e3d71e87f86a898d:-427994299,e6984d250e743110cb98aa89b8f4c94a:1773829576,6e6781e16d743110c0926690e2cd35f3:-179734473</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-21 13:50:06</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
+        <sys_id>42ed2af0436c46d88a60cc0fec07cf24</sys_id>
+        <sys_metadata>8847812197743110db793dafe153af43</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>HampLoanerUtils</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_parent/>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_scope_delete display_value="">229861d2eaf64e1ab7c66287762c0824</sys_scope_delete>
+        <sys_update_name>sys_script_include_8847812197743110db793dafe153af43</sys_update_name>
+        <sys_update_version display_value="sys_script_include_8847812197743110db793dafe153af43">028e91e997b43110db793dafe153afa1</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-21 13:50:06</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>
