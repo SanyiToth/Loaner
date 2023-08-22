@@ -56,7 +56,7 @@
         <record/>
         <record_producer_table/>
         <reference>cmdb_model</reference>
-        <reference_qual>javascript:new 	x_1068794_loaner.HampLoanerAjaxUtils().getModelsWithLoanerAssets()</reference_qual>
+        <reference_qual>javascript:new 	x_1068794_loaner.HampLoanerAjaxUtils(). getAvailableLoanerModels(current.variables.start_date, current.variables.return_date)</reference_qual>
         <reference_qual_condition/>
         <rich_text/>
         <roles_to_use_also_request_for/>
@@ -77,14 +77,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-08-16 09:26:50</sys_created_on>
         <sys_id>e272b27397e03110db793dafe153af31</sys_id>
-        <sys_mod_count>22</sys_mod_count>
+        <sys_mod_count>31</sys_mod_count>
         <sys_name>Model</sys_name>
         <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
         <sys_policy/>
         <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
         <sys_update_name>item_option_new_e272b27397e03110db793dafe153af31</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-08-21 13:47:25</sys_updated_on>
+        <sys_updated_on>2023-08-22 11:47:11</sys_updated_on>
         <table/>
         <tooltip>Model of loaner asset being requested</tooltip>
         <type>8</type>

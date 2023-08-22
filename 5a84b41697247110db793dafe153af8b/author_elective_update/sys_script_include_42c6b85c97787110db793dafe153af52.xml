@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="DELETE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_1068794_loaner.HampLoanerAjaxUtils</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description/>
+        <name>HampLoanerAjaxUtils</name>
+        <script><![CDATA[var HampLoanerAjaxUtils = Class.create();
+HampLoanerAjaxUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    validateDates: function() {
+        var MAX_MONTHS_START_DATE = 3; // Allow reservations with start date within 3 months
+        var MAX_MONTHS_RETURN_DATE = 6; // Allow reservations with return date within 6 months from start date
+
+        var startDateUserFormat = this.getParameter('sysparm_startdate');
+        var startDate = HAMUtils.getDateInInternalFormat(startDateUserFormat);
+        var returnDateUserFormat = this.getParameter('sysparm_returndate');
+        var returnDate = HAMUtils.getDateInInternalFormat(returnDateUserFormat);
+
+        var gDate = new GlideDateTime();
+        var currentDate = gDate.getLocalDate();
+        var res = {};
+        var sdt;
+        if (!gs.nil(startDate)) {
+            sdt = new GlideDateTime(startDate);
+            var cdt = new GlideDateTime(currentDate);
+            var maxsdt = new GlideDateTime(currentDate);
+            maxsdt.addMonthsUTC(MAX_MONTHS_START_DATE);
+            if (sdt.before(cdt)) {
+                res.isStartDateValid = false;
+                res.startDateErrorMsg = gs.getMessage(
+                    '{0} is not valid. Select a start date on or after current date!', [startDate]
+                );
+            } else if (sdt.after(maxsdt)) {
+                res.isStartDateValid = false;
+                res.startDateErrorMsg = gs.getMessage(
+                    '{0} is not valid. Select a start date within {1} months from current date!',
+                    [startDate, String(MAX_MONTHS_START_DATE)]
+                );
+            } else {
+                res.isStartDateValid = true;
+            }
+        }
+        if (!gs.nil(returnDate)) {
+            sdt = new GlideDateTime(startDate);
+            var rdt = new GlideDateTime(returnDate);
+            var maxrdt = new GlideDateTime(startDate);
+            maxrdt.addMonthsUTC(MAX_MONTHS_RETURN_DATE);
+            if (rdt.onOrBefore(sdt)) {
+                res.isReturnDateValid = false;
+                res.returnDateErrorMsg = gs.getMessage(
+                    '{0} is not valid. Select a return date after the selected start date!', [returnDate]
+                );
+            } else if (rdt.after(maxrdt)) {
+                res.isReturnDateValid = false;
+                res.returnDateErrorMsg = gs.getMessage(
+                    '{0} is not valid. Select a return date within {1} months from the selected start date!',
+                    [returnDate, String(MAX_MONTHS_RETURN_DATE)]
+                );
+            } else {
+                res.isReturnDateValid = true;
+            }
+        }
+        return JSON.stringify(res);
+    },
+    getAllLoanerModels: function(startDate,returnDate) {
+        var filter;
+        var modelsarray = [];
+        var assetsGa = new GlideAggregate('alm_asset');
+        assetsGa.addQuery('stockroom.name', 'Domat/Ems').addOrCondition('stockroom.name', 'Bonaduz');
+        // assetsGa.addQuery('install_status', 6);
+        assetsGa.setGroup(true);
+        assetsGa.groupBy('model.sys_id');
+        assetsGa.query();
+        while (assetsGa.next()) {
+            modelsarray.push(assetsGa.getValue('model.sys_id'));
+        }
+        filter = 'sys_idIN' + modelsarray;
+		gs.info('DEBUG>>>' + startDate, returnDate);
+        return filter;
+    },
+
+
+    getAvailableLoanerModels: function(startDate, returnDate) {
+        var availableModels = [];
+        gs.log(this.getAllModels());
+        var allModels = this.getAllModels();
+        for (var i = 0; i < allModels.length; i++) {
+            var model = allModels[i];
+            if (this.isModelAvailableInDateRange(model, startDate, returnDate)) {
+                availableModels.push(model);
+            }
+        }
+        return availableModels;
+    },
+
+    isModelAvailableInDateRange: function(model, startDate, returnDate) {
+        var lao = new GlideRecord('x_1068794_loaner_asset_order');
+        lao.addQuery('model', model);
+        lao.addQuery('start_date', '<=', returnDate);
+        lao.addQuery('return_date', '>=', startDate);
+        lao.query();
+        if (lao.hasNext()) {
+            return true;
+        }
+        return false;
+    },
+
+    getAvailableStockrooms: function(modelDisplayName) {
+        var filter;
+        var stockroomsarray = [];
+        var assetsGa = new GlideAggregate('alm_asset');
+        assetsGa.addQuery('model.display_name', modelDisplayName)
+        assetsGa.setGroup(true);
+        assetsGa.groupBy('stockroom.sys_id');
+        assetsGa.query();
+        while (assetsGa.next()) {
+            stockroomsarray.push(assetsGa.getValue('stockroom.sys_id'));
+        }
+        filter = 'sys_idIN' + stockroomsarray;
+        return filter;
+    },
+
+    type: 'HampLoanerAjaxUtils',
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-17 13:52:37</sys_created_on>
+        <sys_id>42c6b85c97787110db793dafe153af52</sys_id>
+        <sys_mod_count>25</sys_mod_count>
+        <sys_name>HampLoanerAjaxUtils</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_update_name>sys_script_include_42c6b85c97787110db793dafe153af52</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-22 11:10:50</sys_updated_on>
+    </sys_script_include>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="Loaner">5a84b41697247110db793dafe153af8b</application>
+        <file_path/>
+        <instance_id>8ceddeb2dbbc7b000ae3ac44d496199a</instance_id>
+        <instance_name>dev81681</instance_name>
+        <name>sys_script_include_42c6b85c97787110db793dafe153af52</name>
+        <payload>&lt;?xml version="1.0" encoding="UTF-8"?&gt;&lt;record_update table="sys_script_include"&gt;&lt;sys_script_include action="INSERT_OR_UPDATE"&gt;&lt;access&gt;public&lt;/access&gt;&lt;active&gt;true&lt;/active&gt;&lt;api_name&gt;x_1068794_loaner.HampLoanerAjaxUtils&lt;/api_name&gt;&lt;caller_access/&gt;&lt;client_callable&gt;true&lt;/client_callable&gt;&lt;description/&gt;&lt;name&gt;HampLoanerAjaxUtils&lt;/name&gt;&lt;script&gt;&lt;![CDATA[var HampLoanerAjaxUtils = Class.create();
+HampLoanerAjaxUtils.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    validateDates: function() {
+        var MAX_MONTHS_START_DATE = 3; // Allow reservations with start date within 3 months
+        var MAX_MONTHS_RETURN_DATE = 6; // Allow reservations with return date within 6 months from start date
+
+        var startDateUserFormat = this.getParameter('sysparm_startdate');
+        var startDate = HAMUtils.getDateInInternalFormat(startDateUserFormat);
+        var returnDateUserFormat = this.getParameter('sysparm_returndate');
+        var returnDate = HAMUtils.getDateInInternalFormat(returnDateUserFormat);
+
+        var gDate = new GlideDateTime();
+        var currentDate = gDate.getLocalDate();
+        var res = {};
+        var sdt;
+        if (!gs.nil(startDate)) {
+            sdt = new GlideDateTime(startDate);
+            var cdt = new GlideDateTime(currentDate);
+            var maxsdt = new GlideDateTime(currentDate);
+            maxsdt.addMonthsUTC(MAX_MONTHS_START_DATE);
+            if (sdt.before(cdt)) {
+                res.isStartDateValid = false;
+                res.startDateErrorMsg = gs.getMessage(
+                    '{0} is not valid. Select a start date on or after current date!', [startDate]
+                );
+            } else if (sdt.after(maxsdt)) {
+                res.isStartDateValid = false;
+                res.startDateErrorMsg = gs.getMessage(
+                    '{0} is not valid. Select a start date within {1} months from current date!',
+                    [startDate, String(MAX_MONTHS_START_DATE)]
+                );
+            } else {
+                res.isStartDateValid = true;
+            }
+        }
+        if (!gs.nil(returnDate)) {
+            sdt = new GlideDateTime(startDate);
+            var rdt = new GlideDateTime(returnDate);
+            var maxrdt = new GlideDateTime(startDate);
+            maxrdt.addMonthsUTC(MAX_MONTHS_RETURN_DATE);
+            if (rdt.onOrBefore(sdt)) {
+                res.isReturnDateValid = false;
+                res.returnDateErrorMsg = gs.getMessage(
+                    '{0} is not valid. Select a return date after the selected start date!', [returnDate]
+                );
+            } else if (rdt.after(maxrdt)) {
+                res.isReturnDateValid = false;
+                res.returnDateErrorMsg = gs.getMessage(
+                    '{0} is not valid. Select a return date within {1} months from the selected start date!',
+                    [returnDate, String(MAX_MONTHS_RETURN_DATE)]
+                );
+            } else {
+                res.isReturnDateValid = true;
+            }
+        }
+        return JSON.stringify(res);
+    },
+    getAllLoanerModels: function(startDate,returnDate) {
+        var filter;
+        var modelsarray = [];
+        var assetsGa = new GlideAggregate('alm_asset');
+        assetsGa.addQuery('stockroom.name', 'Domat/Ems').addOrCondition('stockroom.name', 'Bonaduz');
+        // assetsGa.addQuery('install_status', 6);
+        assetsGa.setGroup(true);
+        assetsGa.groupBy('model.sys_id');
+        assetsGa.query();
+        while (assetsGa.next()) {
+            modelsarray.push(assetsGa.getValue('model.sys_id'));
+        }
+        filter = 'sys_idIN' + modelsarray;
+		gs.info('DEBUG&gt;&gt;&gt;' + startDate, returnDate);
+        return filter;
+    },
+
+
+    getAvailableLoanerModels: function(startDate, returnDate) {
+        var availableModels = [];
+        gs.log(this.getAllModels());
+        var allModels = this.getAllModels();
+        for (var i = 0; i &lt; allModels.length; i++) {
+            var model = allModels[i];
+            if (this.isModelAvailableInDateRange(model, startDate, returnDate)) {
+                availableModels.push(model);
+            }
+        }
+        return availableModels;
+    },
+
+    isModelAvailableInDateRange: function(model, startDate, returnDate) {
+        var lao = new GlideRecord('x_1068794_loaner_asset_order');
+        lao.addQuery('model', model);
+        lao.addQuery('start_date', '&lt;=', returnDate);
+        lao.addQuery('return_date', '&gt;=', startDate);
+        lao.query();
+        if (lao.hasNext()) {
+            return true;
+        }
+        return false;
+    },
+
+    getAvailableStockrooms: function(modelDisplayName) {
+        var filter;
+        var stockroomsarray = [];
+        var assetsGa = new GlideAggregate('alm_asset');
+        assetsGa.addQuery('model.display_name', modelDisplayName)
+        assetsGa.setGroup(true);
+        assetsGa.groupBy('stockroom.sys_id');
+        assetsGa.query();
+        while (assetsGa.next()) {
+            stockroomsarray.push(assetsGa.getValue('stockroom.sys_id'));
+        }
+        filter = 'sys_idIN' + stockroomsarray;
+        return filter;
+    },
+
+    type: 'HampLoanerAjaxUtils',
+});]]&gt;&lt;/script&gt;&lt;sys_class_name&gt;sys_script_include&lt;/sys_class_name&gt;&lt;sys_created_by&gt;admin&lt;/sys_created_by&gt;&lt;sys_created_on&gt;2023-08-17 13:52:37&lt;/sys_created_on&gt;&lt;sys_id&gt;42c6b85c97787110db793dafe153af52&lt;/sys_id&gt;&lt;sys_mod_count&gt;25&lt;/sys_mod_count&gt;&lt;sys_name&gt;HampLoanerAjaxUtils&lt;/sys_name&gt;&lt;sys_package display_value="Loaner" source="x_1068794_loaner"&gt;5a84b41697247110db793dafe153af8b&lt;/sys_package&gt;&lt;sys_policy/&gt;&lt;sys_scope display_value="Loaner"&gt;5a84b41697247110db793dafe153af8b&lt;/sys_scope&gt;&lt;sys_update_name&gt;sys_script_include_42c6b85c97787110db793dafe153af52&lt;/sys_update_name&gt;&lt;sys_updated_by&gt;admin&lt;/sys_updated_by&gt;&lt;sys_updated_on&gt;2023-08-22 11:10:50&lt;/sys_updated_on&gt;&lt;/sys_script_include&gt;&lt;/record_update&gt;</payload>
+        <payload_hash>2101038800</payload_hash>
+        <record_name>HampLoanerAjaxUtils</record_name>
+        <reverted_from/>
+        <source>238a759a97287110db793dafe153afaa</source>
+        <source_table>sys_update_set</source_table>
+        <state>previous</state>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-22 11:10:51</sys_created_on>
+        <sys_id>3444067d97f47110db793dafe153af20</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_recorded_at>18a1cf0b2720000001</sys_recorded_at>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-22 11:10:51</sys_updated_on>
+        <type>Script Include</type>
+        <update_guid>f844067d7df47110f62dde2bcf8b9c1f</update_guid>
+        <update_guid_history>f844067d7df47110f62dde2bcf8b9c1f:2101038800,c3b34af96af47110e2c29c18f0218c6c:1100113964,2352c279cdf471100b954c2dba3770bb:1943704636,49bf31f510f471106e6eb90cbbedcea3:-352255374,007dbdb514f471109509cfaec5a50779:-569038234,7e5ab5f172f47110d383593aa2b59d7e:1730875934,911831b54eb47110b2aa1acaadee0346:1849227574,523a5935d4747110211abb3a032cabac:-424704312,ded9d1355a74711046ada750d3ab7a35:-1938043224,62a9ddf12174711028d47600665bbece:-1868324778,122aa9652af431102ae8a8889b5e49fc:-894577517,331129e97ab43110f3e06e6baf40bad8:690932569,c0e0e56d0db43110dcce09cd4b4174fe:-97923401,4c50ed2dbdb43110435d940effda5765:-442150328,2b0fd9e9dcb4311079979b9cec3e3361:1013141054,ffe88165da743110cb9548af970139d4:1370785959,3a0e3869bb343110b4b777bd3aa6ceb8:-1882720616,40a73ce158343110026c3f1bbc8c3dd5:1473258183,12e43c21af343110b9f123010f4ce120:495032479,e372b4add9f031103015dc161910f20d:1570390127,5131346dadf0311030fff58647508407:-1667357036,64f0f06d40f031104d64aef33c41b975:-2144326802,cf2f28e96cf03110e7aefcacd285c85b:2132198802,3ea7f06c2738b1102bc15604f113c226:-1599284692,bbee74546bb87110c817fe602e1f0707:2111385224,0e5930102cb871109c3ce58cff996418:-526675568</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-22 11:12:49</sys_created_on>
+        <sys_db_object display_value="" name="sys_script_include">sys_script_include</sys_db_object>
+        <sys_id>2c90de684a634940a48ea2a360629000</sys_id>
+        <sys_metadata>42c6b85c97787110db793dafe153af52</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>HampLoanerAjaxUtils</sys_name>
+        <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
+        <sys_scope_delete display_value="">229861d2eaf64e1ab7c66287762c0824</sys_scope_delete>
+        <sys_update_name>sys_script_include_42c6b85c97787110db793dafe153af52</sys_update_name>
+        <sys_update_version display_value="sys_script_include_42c6b85c97787110db793dafe153af52">3444067d97f47110db793dafe153af20</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-22 11:12:49</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

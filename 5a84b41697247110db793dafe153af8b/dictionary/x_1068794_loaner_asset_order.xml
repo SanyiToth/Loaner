@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><database>
-    <element db_object_id="ea5bf95a97287110db793dafe153af96" extends="task" label="Loaner Asset Order" max_length="40" name="x_1068794_loaner_asset_order" type="collection">
+    <element audit="true" db_object_id="ea5bf95a97287110db793dafe153af96" extends="task" label="Loaner Asset Order" max_length="40" name="x_1068794_loaner_asset_order" type="collection">
         <element label="Asset" max_length="32" name="asset" reference="alm_asset" type="reference"/>
         <element label="Asset functional" max_length="40" name="asset_functional" type="string"/>
         <element label="Asset Prepared" max_length="40" name="asset_prepared" type="boolean"/>
@@ -10,6 +10,7 @@
         <element label="Lead time" max_length="40" name="lead_time" type="integer"/>
         <element label="Loaner order status" max_length="40" name="loaner_order_status" type="string"/>
         <element label="Model" max_length="32" name="model" reference="cmdb_model" type="reference"/>
+        <element attributes="encode_utf8=false" label="Pick up location" max_length="32" name="pick_up_location" reference="alm_stockroom" type="reference"/>
         <element label="Preparation Start Date" max_length="32" name="preparation_start_date" type="glide_date"/>
         <element label="Requested for" max_length="32" name="requested_for" reference="sys_user" type="reference"/>
         <element default="for_me" label="Request type" max_length="40" name="request_type" type="string"/>

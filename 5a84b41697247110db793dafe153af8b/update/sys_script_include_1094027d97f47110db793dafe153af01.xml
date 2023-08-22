@@ -64,119 +64,99 @@ HampLoanerAjaxUtils.prototype = Object.extendsObject(global.AbstractAjaxProcesso
         }
         return JSON.stringify(res);
     },
-    getModelsWithLoanerAssets: function(locationName) {
-        var filter;
-        var modelsarray = [];
+
+    getAllLoanerModels: function() {
+        var allModels = [];
+        var modelCount = 0;
         var assetsGa = new GlideAggregate('alm_asset');
-        if (!locationName) {
-            assetsGa.addQuery('stockroom.name', 'Domat/Ems').addOrCondition('stockroom.name', 'Bonaduz');
-        } else {
-            assetsGa.addQuery('stockroom.name', locationName);
-        }
-        assetsGa.addQuery('install_status', 6);
+        assetsGa.addQuery('stockroom.name', 'Domat/Ems').addOrCondition('stockroom.name', 'Bonaduz');
+        // assetsGa.addQuery('install_status', 6);
         assetsGa.setGroup(true);
         assetsGa.groupBy('model.sys_id');
         assetsGa.query();
         while (assetsGa.next()) {
-            modelsarray.push(assetsGa.getValue('model.sys_id'));
+            allModels.push(assetsGa.getValue('model.sys_id'));
         }
-        filter = 'sys_idIN' + modelsarray;
-        return filter;
+        gs.info('modelCount' + this.getAllLoanerModelsCount());
+        return allModels;
     },
 	
-	getStockRoomsForSelectedModel: function (modelDisplayName) {
-		var filter;
-		var stockroomsarray = [];
-		var assetsGa = new GlideAggregate('alm_asset');
-		assetsGa.addQuery('model.display_name', modelDisplayName)
-		assetsGa.setGroup(true);
-		assetsGa.groupBy('stockroom.sys_id');
-		assetsGa.query();
-		while (assetsGa.next()) {
-			stockroomsarray.push(assetsGa.getValue('stockroom.sys_id'));
-		}
-		filter = 'sys_idIN' + stockroomsarray;
-		return filter;
-	},
-	
-	
-    /* 	isLoanerModelsExist: function () {  
-    		var location = this.getParameter('sysparm_location');
-    		if (!gs.nil(this.getParameter('sysparm_model'))) {
-    			var model = this.getParameter('sysparm_model');
-    			if (new sn_hamp.HampLoanerUtils().isLoanerAssetExist(location, model)) {
-    				return 'yes';
-    			}
-    		}
-    		if (new sn_hamp.HampLoanerUtils().isLoanerAssetExist(location)) {
-    			return 'modelNotPresent';
-    		}
-    		return 'noLoanerModels';
-    	}, */
-    /* 	isLoanerAssetAvailable: function () {
-    		var model = this.getParameter('sysparm_model');
-    		var location = this.getParameter('sysparm_location');
-    		var startDateUserFormat = this.getParameter('sysparm_start_date');
-    		var returnDateUserFormat = this.getParameter('sysparm_return_date');
-    		var leadTimeInDays = this.getParameter('sysparm_lead_time');
+    getAllLoanerModelsCount: function() {
+        var modelCount = 0;
+        var assetsGr = new GlideRecord('alm_asset');
+        assetsGr.addQuery('stockroom.name', 'Domat/Ems').addOrCondition('stockroom.name', 'Bonaduz');
+        // assetsGr.addQuery('install_status', 6);
+        assetsGr.query();
+        while (assetsGr.next()) {
+            if (assetsGr.model.sys_id) {
+                modelCount++;
+            }
+        }
+        return modelCount;
+    },
 
-    		var startDate = HAMUtils.getDateInInternalFormat(startDateUserFormat);
-    		var returnDate = HAMUtils.getDateInInternalFormat(returnDateUserFormat);
 
-    		var isLoanerAssetAvailable = new sn_hamp.HAMAssetReservationUtils().isLoanerAssetAvailableBetweenDates(
-    			model,
-    			location,
-    			startDate,
-    			returnDate,
-    			leadTimeInDays
-    		);
+    getAllLoanerModelsInUse: function(startDate, returnDate) {
+        var modelsInUse = [];
+        var assetsGa = new GlideAggregate('x_1068794_loaner_asset_order');
+        assetsGa.addQuery('start_date', '<=', returnDate);
+        assetsGa.addQuery('return_date', '>=', startDate);
+        assetsGa.setGroup(true);
+        assetsGa.groupBy('model.sys_id');
+        assetsGa.query();
+        while (assetsGa.next()) {
+            modelsInUse.push(assetsGa.getValue('model.sys_id'));
+        }
+        gs.info('DEBUG modelsInUse>>>' + modelsInUse);
+        return modelsInUse;
+    },
 
-    		var message = '';
-    		if (!isLoanerAssetAvailable) {
-    			message = gs.getMessage(
-    				'There are no loaner assets available for this time period. If you choose to submit, your request will join a waitlist.' // eslint-disable-line
-    			);
-    		}
+    compareArrays: function(allModels, modelsInUse) {
+        var difference = [];
+        for (var i = 0; i < allModels.length; i++) {
+            if (modelsInUse.indexOf(allModels[i]) === -1) {
+                difference.push(allModels[i]);
+            }
+        }
+        return difference;
+    },
 
-    		return JSON.stringify({
-    			isAvailable: isLoanerAssetAvailable,
-    			message: message,
-    		});
-    	}, */
-    /* 	getLoanerOrder: function () {
-    		var sysId = this.getParameter('sysparm_loaner');
-    		var loanerId;
-    		var tableName = this.getParameter('sysparm_table');
-    		if (tableName === sn_hamp.HampLoanerUtils.LOANER_TASK_TABLE) {
-    			loanerId = new global.GlideQuery(sn_hamp.HampLoanerUtils.LOANER_TASK_TABLE)
-    				.withAcls()
-    				.where('sys_id', sysId)
-    				.select('loaner_order')
-    				.toArray(1);
-    			loanerId = loanerId[0].loaner_order;
-    		} else {
-    			loanerId = sysId;
-    		}
-    		var response = new global.GlideQuery(sn_hamp.HampLoanerUtils.LOANER_ORDER_TABLE)
-    			.withAcls()
-    			.where('sys_id', loanerId)
-    			.selectOne('asset.sys_id', 'asset.display_name', 'asset_stockroom')
-    			.get();
-    		return JSON.stringify(response);
-    	}, */
+    getAvailableLoanerModels: function(startDate, returnDate) {
+        var filter;
+        var allModels = this.getAllLoanerModels();
+        var modelsInUse = this.getAllLoanerModelsInUse(startDate, returnDate);
+        filter = 'sys_idIN' + this.compareArrays(allModels, modelsInUse);
+        return filter;
+    },
+
+    getAvailableStockrooms: function(modelDisplayName) {
+        var filter;
+        var stockroomsarray = [];
+        var assetsGa = new GlideAggregate('alm_asset');
+        assetsGa.addQuery('model.display_name', modelDisplayName)
+        assetsGa.setGroup(true);
+        assetsGa.groupBy('stockroom.sys_id');
+        assetsGa.query();
+        while (assetsGa.next()) {
+            stockroomsarray.push(assetsGa.getValue('stockroom.sys_id'));
+        }
+        filter = 'sys_idIN' + stockroomsarray;
+        return filter;
+    },
+
     type: 'HampLoanerAjaxUtils',
 });]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2023-08-17 13:52:37</sys_created_on>
-        <sys_id>42c6b85c97787110db793dafe153af52</sys_id>
-        <sys_mod_count>15</sys_mod_count>
+        <sys_created_on>2023-08-22 11:12:11</sys_created_on>
+        <sys_id>1094027d97f47110db793dafe153af01</sys_id>
+        <sys_mod_count>40</sys_mod_count>
         <sys_name>HampLoanerAjaxUtils</sys_name>
         <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
         <sys_policy/>
         <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
-        <sys_update_name>sys_script_include_42c6b85c97787110db793dafe153af52</sys_update_name>
+        <sys_update_name>sys_script_include_1094027d97f47110db793dafe153af01</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-08-21 14:38:19</sys_updated_on>
+        <sys_updated_on>2023-08-22 15:23:12</sys_updated_on>
     </sys_script_include>
 </record_update>

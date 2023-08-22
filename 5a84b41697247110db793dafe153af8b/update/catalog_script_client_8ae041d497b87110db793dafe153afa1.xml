@@ -24,20 +24,11 @@
     }
 }
 
-function checkLoanerAssetAvailability() {
-    if (g_form.getValue('location') !== '' &&
-        g_form.getValue('model') !== '' &&
-        g_form.getValue('start_date') !== '' &&
+function setSysParmDates() {
+    if (g_form.getValue('start_date') !== '' &&
         g_form.getValue('return_date') !== '') {
-
-        var ga = new GlideAjax('x_1068794_loaner.HampLoanerAjaxUtils');
-        ga.addParam('sysparm_name', 'isLoanerAssetAvailable');
-        ga.addParam('sysparm_location', g_form.getValue('location'));
-        ga.addParam('sysparm_model', g_form.getValue('model'));
-        ga.addParam('sysparm_lead_time', g_form.getValue('lead_time'));
         ga.addParam('sysparm_start_date', g_form.getValue('start_date'));
         ga.addParam('sysparm_return_date', g_form.getValue('return_date'));
-        ga.getXML(handleLoanerAssetAvailabilityResponse);
     }
 }
 
@@ -57,18 +48,16 @@ function onChange(control, oldValue, newValue, isLoading) {
             g_form.hideFieldMsg('model', true);
             g_form.hideFieldMsg('pick_up_location', true);
             g_form.hideFieldMsg('justification', true);
-        }
-        else if (answer['isReturnDateValid'] == false) {
+        } else if (answer['isReturnDateValid'] == false) {
             msg = answer['returnDateErrorMsg'];
             g_form.showFieldMsg('return_date', msg, 'error');
             g_form.setMandatory('model', false);
             g_form.setDisabled('model', true);
-        }
-        else if (answer['isStartDateValid'] == true && answer['isReturnDateValid'] == true) {
+        } else if (answer['isStartDateValid'] == true && answer['isReturnDateValid'] == true) {
             g_form.setDisabled('model', false);
             g_form.setMandatory('model', true);
         }
-        // checkLoanerAssetAvailability();
+       // setSysParmDates();
     }
     if (isLoading || newValue == '') {
         g_form.clearValue('model');
@@ -92,7 +81,7 @@ function onChange(control, oldValue, newValue, isLoading) {
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>8ae041d497b87110db793dafe153afa1</sys_id>
-        <sys_mod_count>19</sys_mod_count>
+        <sys_mod_count>22</sys_mod_count>
         <sys_name>Handle Return date change</sys_name>
         <sys_overrides/>
         <sys_package display_value="Loaner" source="x_1068794_loaner">5a84b41697247110db793dafe153af8b</sys_package>
@@ -100,7 +89,7 @@ function onChange(control, oldValue, newValue, isLoading) {
         <sys_scope display_value="Loaner">5a84b41697247110db793dafe153af8b</sys_scope>
         <sys_update_name>catalog_script_client_8ae041d497b87110db793dafe153afa1</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-08-18 11:51:13</sys_updated_on>
+        <sys_updated_on>2023-08-22 10:49:28</sys_updated_on>
         <table/>
         <type>onChange</type>
         <ui_type>10</ui_type>
